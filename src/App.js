@@ -3,6 +3,8 @@ import "./App.css";
 import ListOfNotes from "./ListOfNotes";
 import Note from "./Note";
 import Header from "./Header";
+import Footer from "./Footer";
+
 import {
   collection,
   addDoc,
@@ -66,20 +68,23 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <ListOfNotes onAdd={addNote} />
-      {notes.length > 0
-        ? notes.map((noteItem, index) => {
-            return (
-              <Note
-                key={noteItem.id}
-                id={noteItem.id}
-                title={noteItem.title}
-                content={noteItem.content}
-                deleteItem={addDelete}
-              />
-            );
-          })
-        : null}
+      <main>
+        <ListOfNotes onAdd={addNote} />
+        {notes.length > 0
+          ? notes.map((noteItem, index) => {
+              return (
+                <Note
+                  key={noteItem.id}
+                  id={noteItem.id}
+                  title={noteItem.title}
+                  content={noteItem.content}
+                  deleteItem={addDelete}
+                />
+              );
+            })
+          : null}
+      </main>
+      <Footer />
     </div>
   );
 }
