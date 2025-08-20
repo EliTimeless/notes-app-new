@@ -4,7 +4,7 @@ Welcome to the Todo List React App repository! This project is a simple and intu
 
 📝 Live Demo
 
-Check out the live demo of the application [here](https://tododoreactapp.netlify.app/).
+Check out the live demo of the application [here](https://app-notes-new-react.netlify.app/).  
 
 📝 Features
 
