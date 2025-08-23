@@ -1,6 +1,6 @@
-📝 Todo List React App
+📝 Notes React App
 
-Welcome to the Todo List React App repository! This project is a simple and intuitive todo list application built using React. You can manage your daily tasks by adding and deleting them.
+Welcome to the Notes React App repository! This project is a simple and intuitive todo list application built using React. You can manage your daily tasks by adding and deleting them.
 
 📝 Live Demo
 
@@ -18,6 +18,7 @@ Check out the live demo of the application [here](https://app-notes-new-react.ne
 - HTML
 - CSS
 - Netlify (for deployment)
+- Firebase
 
 📝 Getting Started
 
