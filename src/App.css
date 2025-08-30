@@ -14,23 +14,6 @@
     flex-direction: column;
     min-height: 100vh;
 }
-.ListOfNotes {
-  font-family: "M PLUS Code Latin", monospace;
-  font-weight: 200;
-max-height: 170px;  padding: 0;
-  margin-top: 0;
-  margin-bottom: 30px;
-  box-shadow: 2px 2px 4px 4px grey;
-  background-color: var(--main-background-color);
-  border: solid 2px var(--secondary-color);
-}
-
-
-.Footer{
-justify-content: center;
-padding: 20px 50px;
-margin: 0 auto;
-}
 
 .main {
   background-color: var(--main-background-color);
@@ -50,31 +33,7 @@ h1 {
   text-shadow: 4px 4px 4px rgb(79, 78, 78);
 }
 
-.item-example {
-  margin: 20px auto;
-  font-size: 1.4rem;
-  text-align: center;
-  width: 300px;
-  background-color: var(--main-background-color);
-  color: blanchedalmond;
-  border: 8px solid var(--border-color);
-  border-radius: 3px;
-  padding: 20px 30px;
-  box-shadow: 4px 4px 4px grey;
-  position: relative;
-}
-.input {
-  opacity: 20px;
-  font-size: 20px;
-  border: solid 2px var(--secondary-color);
-  border-radius: 5px;
-}
-
-.container {
-  margin: 20px;
-  display: flex;
-  
-}
+/*Note.css*/
 
 .item {
   font-size: 1.1rem;
@@ -98,31 +57,10 @@ h1 {
   float: left;
 }
 
-form .addButton {
-  font-size: 30px;
-  font-weight: bold;
-  background-color: var(--secondary-color);
-  border: solid 3px rgb(152, 207, 255);
-  border-radius: 25px;
-  font-weight: bold;
-  cursor: pointer;
-  outline: none;
-  /* box-shadow: 4px 4px 4px rgb(79, 78, 78); */
+/* Footer.css */
+.Footer {
+  justify-content: center;
+  padding: 20px 50px;
+  margin: 0 auto;
 }
 
-.deleteButton {
-  justify-content: right;
-  text-align: right;
-  margin: 10px;
-  color: antiquewhite;
-  font-weight: bold;
-  background-color: rgb(215, 41, 76);
-  border: var(--border-color);
-  border-radius: 2px;
-  cursor: pointer;
-  outline: none;
-}
-
-:hover.deleteButton {
-  background-color: rgb(231, 131, 151);
-}

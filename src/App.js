@@ -13,6 +13,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 import { db } from "./Firebase";
+import SignUp from "./SignUp";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -68,6 +69,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <SignUp />
       <main>
         <ListOfNotes onAdd={addNote} />
         {notes.length > 0
