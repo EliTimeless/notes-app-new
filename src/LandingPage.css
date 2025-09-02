@@ -1,0 +1,25 @@
+.landing-page {
+    text-align: center;
+    margin-top: 50px;
+}
+h3 {
+    margin-bottom: 50px;
+}
+
+.routes{
+text-decoration: none;
+color: rgb(75, 9, 105);
+font-size: 20px;
+margin: 5px;
+padding: 10px 20px;
+font-weight: bold;
+border: solid 2px rgb(234, 188, 255);
+border-radius: 5px;
+background-color: rgb(216, 234, 223);   
+
+}
+.routes:hover {
+    background-color: rgb(234, 188, 255);
+    color: white;
+    cursor: pointer;
+}

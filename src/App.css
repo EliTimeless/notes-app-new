@@ -14,29 +14,12 @@
     flex-direction: column;
     min-height: 100vh;
 }
-.ListOfNotes {
-  font-family: "M PLUS Code Latin", monospace;
-  font-weight: 200;
-max-height: 170px;  padding: 0;
-  margin-top: 0;
-  margin-bottom: 30px;
-  box-shadow: 2px 2px 4px 4px grey;
-  background-color: var(--main-background-color);
-  border: solid 2px var(--secondary-color);
-}
-
-
-.Footer{
-justify-content: center;
-padding: 20px 50px;
-margin: 0 auto;
-}
 
 .main {
   background-color: var(--main-background-color);
 }
 
-h1 {
+.App h1 {
   font-size: 50px;
   color: rgb(234, 188, 255);
   padding: 20px;
@@ -44,37 +27,60 @@ h1 {
   margin-left: 100px;
 }
 
+.App .logOutButton {
+  text-decoration: none;
+  color: var(--main-background-color);
+  font-size: 20px;
+  margin: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: solid 2px rgb(234, 188, 255);
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.App .logOutButton:hover {
+  background-color: rgb(234, 188, 255);
+  color: var(--main-background-color);
+  cursor: pointer;
+} 
+
 .heading {
   margin-bottom: 50px;
   text-align: left;
   text-shadow: 4px 4px 4px rgb(79, 78, 78);
 }
 
-.item-example {
-  margin: 20px auto;
-  font-size: 1.4rem;
-  text-align: center;
-  width: 300px;
-  background-color: var(--main-background-color);
-  color: blanchedalmond;
-  border: 8px solid var(--border-color);
-  border-radius: 3px;
-  padding: 20px 30px;
-  box-shadow: 4px 4px 4px grey;
-  position: relative;
-}
-.input {
-  opacity: 20px;
-  font-size: 20px;
-  border: solid 2px var(--secondary-color);
-  border-radius: 5px;
+.Header {
+      font-family: "M PLUS Code Latin", monospace;
+      font-weight: 200;
+      max-height: 170px;
+      padding: 0;
+      margin-top: 0;
+      margin-bottom: 30px;
+      box-shadow: 2px 2px 4px 4px grey;
+      background-color: var(--main-background-color);
+      border: solid 2px var(--secondary-color);
+      
+    }
+
+.Header .nav-link {
+  text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
 }
 
-.container {
-  margin: 20px;
-  display: flex;
-  
+.loading {
+  text-align: center;
+  margin-top: 200px;
 }
+
+
+
+/*Note.css*/
 
 .item {
   font-size: 1.1rem;
@@ -84,45 +90,36 @@ h1 {
   letter-spacing: 1px;
 }
 
+.notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
 .itemNote {
-  font-size: 1.5rem;
-  text-align: end;
+  flex: 1 1 250px;
+  max-width: 300px;
+  font-size: 1.2rem;
   background-color: rgb(216, 234, 223);
   color: rgb(48, 48, 48);
-  border: 1px solid rgb(234, 188, 255);;
+  border: 1px solid rgb(234, 188, 255);
   border-radius: 3px;
   padding: 10px 15px;
-  margin: 20px 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
-  float: left;
 }
 
-form .addButton {
-  font-size: 30px;
-  font-weight: bold;
-  background-color: var(--secondary-color);
-  border: solid 3px rgb(152, 207, 255);
-  border-radius: 25px;
-  font-weight: bold;
-  cursor: pointer;
-  outline: none;
-  /* box-shadow: 4px 4px 4px rgb(79, 78, 78); */
+/* Footer.css */
+.Footer {
+text-align: center;  padding: 20px 50px;
+  margin-top: auto
 }
 
-.deleteButton {
-  justify-content: right;
-  text-align: right;
-  margin: 10px;
-  color: antiquewhite;
-  font-weight: bold;
-  background-color: rgb(215, 41, 76);
-  border: var(--border-color);
-  border-radius: 2px;
-  cursor: pointer;
-  outline: none;
+.loggedoff-text {
+  text-align: center;
+  color: var(--main-background-color);
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
-:hover.deleteButton {
-  background-color: rgb(231, 131, 151);
-}

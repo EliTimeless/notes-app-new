@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./ListOfNotes.css";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import Zoom from "@mui/material/Zoom";
