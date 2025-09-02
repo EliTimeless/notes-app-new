@@ -1,94 +1,56 @@
-import { useState, useEffect } from "react";
-import "./App.css";
-import ListOfNotes from "./ListOfNotes";
-import Note from "./Note";
+import { useEffect, useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-
-import {
-  collection,
-  addDoc,
-  doc,
-  deleteDoc,
-  getDocs,
-} from "firebase/firestore";
-import { db } from "./Firebase";
+import "./App.css";
 import SignUp from "./SignUp";
+import Login from "./Login";
+import NotesApp from "./NotesApp";
+import LandingPage from "./LandingPage";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./Firebase";
+import { ClipLoader } from "react-spinners";
 
-function App() {
-  const [notes, setNotes] = useState([]);
-  const maxTitleLength = 50;
-  const maxContentLength = 250;
-
-  async function addNote(newNote) {
-    if (
-      newNote.content.trim() &&
-      newNote.title.length <= maxTitleLength &&
-      newNote.content.length <= maxContentLength
-    ) {
-      try {
-        const docRef = await addDoc(collection(db, "notes"), newNote);
-        setNotes((prevNotes) => [...prevNotes, { ...newNote, id: docRef.id }]);
-      } catch (error) {
-        console.log("something is wrong", error);
-      }
-    } else {
-      alert("Note exceeds maximum allowed characters!");
-    }
-  }
+export default function App() {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  let [color, setColor] = useState("#b081c5");
 
   useEffect(() => {
-    async function fetchNotes() {
-      try {
-        const querySnapshot = await getDocs(collection(db, "notes"));
-        const notesArray = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setNotes(notesArray);
-      } catch (error) {
-        console.error("Error loading notes:", error);
-      }
-    }
-    fetchNotes();
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => unsubscribe();
   }, []);
 
-  async function addDelete(id) {
-    const prevNotes = notes;
-    setNotes((prev) => prev.filter((note) => note.id !== id));
-
-    try {
-      await deleteDoc(doc(db, "notes", id));
-    } catch (error) {
-      console.error("Delete error", error);
-      setNotes(prevNotes);
-      alert("Deleting in db failed. Changes are restored");
-    }
+  if (loading) {
+    return (
+      <div className="loading">
+        <ClipLoader
+          color={color}
+          loading={loading}
+          size={150}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    );
   }
 
   return (
     <div className="App">
       <Header />
-      <SignUp />
-      <main>
-        <ListOfNotes onAdd={addNote} />
-        {notes.length > 0
-          ? notes.map((noteItem, index) => {
-              return (
-                <Note
-                  key={noteItem.id}
-                  id={noteItem.id}
-                  title={noteItem.title}
-                  content={noteItem.content}
-                  deleteItem={addDelete}
-                />
-              );
-            })
-          : null}
-      </main>
+      <Routes>
+        <Route path="/" element={<LandingPage user={user} />} />
+        <Route
+          path="/notes"
+          element={user ? <NotesApp /> : <Navigate to="/login" />}
+        />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
       <Footer />
     </div>
   );
 }
-
-export default App;

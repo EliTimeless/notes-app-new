@@ -1,16 +1,16 @@
-import { Email, Password } from "@mui/icons-material";
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { signOut } from "firebase/auth";
 import { auth } from "./Firebase";
+import "./SignUp.css";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -18,26 +18,29 @@ export default function SignUp() {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log("User created:", userCredential.user);
-        setLoggedIn(true);
+        navigate("/notes");
       })
       .catch((error) => {
         console.error("Error:", error.code, error.message);
+        setEmailError("");
+        setPasswordError("");
+
         if (error.code === "auth/weak-password") {
-          setError("Password must be at least 6 characters long.");
+          setPasswordError("Password must be at least 6 characters long.");
         } else if (error.code === "auth/email-already-in-use") {
-          setError("This email is already registered.");
+          setEmailError("This email is already registered.");
         } else if (error.code === "auth/invalid-email") {
-          setError("Invalid email address.");
+          setEmailError("Invalid email address.");
         } else {
-          setError("Something went wrong. Please try again.");
+          setEmailError("Something went wrong. Please try again.");
         }
       });
   }
 
   return (
-    <div>
-      <h1>Sign Up Page</h1>
-      <form>
+    <div className="signup">
+      <h2>Sign Up</h2>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
           id="email"
@@ -48,21 +51,20 @@ export default function SignUp() {
           required
           onChange={(e) => setEmail(e.target.value)}
         />
+        {emailError && <p style={{ color: "red" }}>{emailError}</p>}
         <label htmlFor="password">Password</label>
         <input
           id="password"
           type="password"
           name="password"
           placeholder="Password"
-          autoComplete="password"
+          autoComplete="new-password"
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" onClick={handleSubmit}>
-          Sign Up
-        </button>
+        {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
+        <button type="submit">Sign Up</button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 }

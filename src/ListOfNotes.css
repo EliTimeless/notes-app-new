@@ -5,20 +5,6 @@
     --secondary-color: rgb(176, 129, 197);
 
 }
-
-
-.ListOfNotes {
-    font-family: "M PLUS Code Latin", monospace;
-    font-weight: 200;
-    max-height: 170px;
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 30px;
-    box-shadow: 2px 2px 4px 4px grey;
-    background-color: var(--main-background-color);
-    border: solid 2px var(--secondary-color);
-}
-
 .item-example {
     margin: 20px auto;
     font-size: 1.4rem;
@@ -39,8 +25,11 @@
     border: solid 2px var(--secondary-color);
     border-radius: 5px;
 }
-
-
+.input:focus {
+    outline: none;
+    border: solid 2px rgb(152, 207, 255);
+    box-shadow: 0 0 10px rgb(152, 207, 255);
+}
 
 form .addButton {
     font-size: 30px;
