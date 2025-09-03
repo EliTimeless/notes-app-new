@@ -20,6 +20,7 @@ export default function App() {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
+      setColor(currentUser ? "#b081c5" : "#36d7b7");
     });
     return () => unsubscribe();
   }, []);
