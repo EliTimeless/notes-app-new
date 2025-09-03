@@ -26,11 +26,7 @@ export default function Login() {
     setPasswordError("");
 
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      await signInWithEmailAndPassword(auth, email, password);
       navigate("/notes");
     } catch (error) {
       console.error("Error:", error.code, error.message);
