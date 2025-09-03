@@ -90,7 +90,7 @@ export default function NotesApp() {
             await signOut(auth);
             navigate("/");
           } catch (error) {
-            console.error("Chyba při odhlašování:", error);
+            console.error("Log out error:", error);
           }
         }}
       >

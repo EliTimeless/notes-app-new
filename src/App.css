@@ -23,7 +23,6 @@
   font-size: 50px;
   color: rgb(234, 188, 255);
   padding: 20px;
-  /* background-color: var(--main-background-color); */
   margin-left: 100px;
 }
 
@@ -41,6 +40,7 @@
   top: 20px;
   right: 20px;
 }
+
 .App .logOutButton:hover {
   background-color: rgb(234, 188, 255);
   color: var(--main-background-color);
@@ -116,10 +116,4 @@ text-align: center;  padding: 20px 50px;
   margin-top: auto
 }
 
-.loggedoff-text {
-  text-align: center;
-  color: var(--main-background-color);
-  font-size: 20px;
-  margin-bottom: 20px;
-}
 

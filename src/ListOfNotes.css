@@ -40,7 +40,6 @@ form .addButton {
     font-weight: bold;
     cursor: pointer;
     outline: none;
-    /* box-shadow: 4px 4px 4px rgb(79, 78, 78); */
 }
 
 .deleteButton {

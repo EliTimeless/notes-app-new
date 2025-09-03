@@ -46,7 +46,7 @@ export default function App() {
         <Route path="/" element={<LandingPage user={user} />} />
         <Route
           path="/notes"
-          element={user ? <NotesApp /> : <Navigate to="/login" />}
+          element={user ? <NotesApp /> : <Navigate to="/" />}
         />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
